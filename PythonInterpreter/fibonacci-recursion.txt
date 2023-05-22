@@ -1,0 +1,15 @@
+FUNCTION fibonacciRecursive(n)
+   IF n <= 1 THEN
+      RETURN n
+    ELSE RETURN fibonacciRecursive(n-1) + fibonacciRecursive(n-2)
+    END
+
+PRINT(fibonacciRecursive(8))
+PRINT(fibonacciRecursive(9))
+PRINT(fibonacciRecursive(10))
+
+WRITEFILE(fibonacciRecursive(8), "result.txt")
+APPENDFILE(fibonacciRecursive(9), "result.txt")
+APPENDFILE(fibonacciRecursive(10), "result.txt")
+
+

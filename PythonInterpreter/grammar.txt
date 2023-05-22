@@ -1,0 +1,56 @@
+
+program : statement
+
+---------------------------------------------------
+
+statement
+     : variable-declaration
+	  | variable-assignment
+	  | if-expr
+     | for-expr
+     | while-expr
+     | function-declaration
+	  | print-statement
+	  ;
+
+variable-declaration : ('ATTR')? 'VAR' IDENTIFIER '=' expr
+
+variable-assignment : IDENTIFIER '=' expr
+
+if-expr              : 'IF' expr 'THEN' expr
+						       ('ELIF' expr 'THEN' expr)*
+						       ('ELSE' expr)?
+
+for-expr             : 'FOR' IDENTIFIER '=' expr 'TO' expr ('STEP' expr)? 'THEN' expr
+
+while-expr           : 'WHILE' expr 'THEN' expr
+
+function-declaration : 'FUNCTION' IDENTIFIER '(' (IDENTIFIER (',' IDENTIFIER)* )? ')' '->' expr
+
+print-statement : PRINT'(' expr ')'
+
+---------------------------------------------------
+
+expr
+   : INT|DOUBLE|STRING|IDENTIFIER   									 # int, double, string, variable name
+   | function-call                                              # function call
+   | '(' expr ')'                   									 # parenthesis expression
+   | expr mult-operand expr         									 # operations with * or /
+   | expr add-operand expr           								     # operations with + or -
+   | expr comp-operand expr         								     # comparison operations
+   | (expr comp-operand expr) logic-operand (expr comp-operand expr)     # logical expressions
+   ;
+
+INT           : -?[0-9]+
+DOUBLE        : -?[0-9]+.[0-9]+
+STRING        : "[a-zA-z_0-9]+"
+IDENTIFIER    : [a-zA-z_]+
+function-call : IDENTIFIER'(' (expr (',' expr)* )? ')'
+ATTR          : 'SINGLE' | 'CONST' | 'PRINTONLY' | 'MAGICAL'
+mult-operand  : '*' | '/'
+add-operand   : '+' | '-' 
+comp-operand  : '>' | '<' | '==' | '!=' | '>=' | '<='
+logic-operand : 'AND' | 'OR'
+
+---------------------------------------------------
+							

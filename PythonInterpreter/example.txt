@@ -1,0 +1,18 @@
+# This is a very useful piece of software
+
+FUNCTION greet(name)
+   PRINT("Hello, " + name)
+END
+
+FUNCTION sum(a, b)
+   RETURN a + b
+END
+
+greet("John")
+PRINT(sum(6.651, 9.454))
+
+VAR i = 0
+WHILE i < 10 THEN
+   PRINT(i)
+   VAR i = i + 1 
+END

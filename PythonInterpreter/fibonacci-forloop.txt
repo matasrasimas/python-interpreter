@@ -1,0 +1,22 @@
+FUNCTION fibonacciForloop(n)
+   VAR arr = [0, 1]
+   IF n <= 0 OR n == 1 THEN RETURN 0
+   VAR i = 0
+   FOR i = 2 TO n+1 THEN
+      arr + ((arr / (i-1)) + (arr / (i-2)))
+   END
+   RETURN arr / n
+END
+
+PRINT(fibonacciForloop(0))
+PRINT(fibonacciForloop(1))
+PRINT(fibonacciForloop(8))
+PRINT(fibonacciForloop(9))
+PRINT(fibonacciForloop(10))
+
+WRITEFILE(fibonacciForloop(8), "result.txt")
+APPENDFILE(fibonacciForloop(9), "result.txt")
+APPENDFILE(fibonacciForloop(10), "result.txt")
+
+
+
